@@ -1,0 +1,185 @@
+:root {
+  --ink: #12162b;
+  --muted: #586079;
+  --line: #d8dbe9;
+  --paper: #f4f5fa;
+  --card: #ffffff;
+  --brand: #1a237e;
+  --brand-dark: #0f1654;
+  --ok: #1b6e3c;
+  --err: #b3261e;
+  --err-bg: #fdecea;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+
+body {
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+  font: 16px/1.55 "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px 40px;
+}
+
+.hidden { display: none !important; }
+
+/* ---------- top bar ---------- */
+.top {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 22px 2px 16px;
+}
+.wordmark { font-size: 1.45rem; font-weight: 700; color: var(--brand); letter-spacing: .2px; }
+.org { color: var(--muted); font-size: .92rem; text-align: right; }
+
+/* ---------- panel ---------- */
+.panel {
+  width: 100%;
+  max-width: 480px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 22px 20px 24px;
+}
+
+/* ---------- type ---------- */
+h1 { font-size: 1.3rem; line-height: 1.25; margin: 0 0 6px; }
+h1:focus { outline: none; }
+.lead { margin: 0 0 18px; color: var(--muted); font-size: .96rem; max-width: 60ch; }
+.hint { font-size: .84rem; color: var(--muted); margin: 6px 0 0; }
+
+/* ---------- form ---------- */
+label { display: block; font-weight: 600; font-size: .9rem; margin: 16px 0 6px; }
+input {
+  width: 100%;
+  padding: 12px 13px;
+  font: inherit;
+  color: var(--ink);
+  background: #fff;
+  border: 1.5px solid var(--line);
+  border-radius: 8px;
+}
+input:focus-visible { outline: 3px solid rgba(26, 35, 126, .28); border-color: var(--brand); }
+
+.btn {
+  width: 100%;
+  margin-top: 22px;
+  padding: 13px;
+  font: inherit;
+  font-weight: 600;
+  color: #fff;
+  background: var(--brand);
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.btn:hover:not(:disabled) { background: var(--brand-dark); }
+.btn:focus-visible, .textbtn:focus-visible { outline: 3px solid rgba(26, 35, 126, .4); outline-offset: 2px; }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+
+.textbtn {
+  display: block;
+  margin: 16px auto 0;
+  background: none;
+  border: 0;
+  padding: 4px;
+  color: var(--brand);
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ---------- password show/hide ---------- */
+.pwrow { position: relative; }
+.pwrow input { padding-right: 76px; }
+.pwrow .textbtn {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+  padding: 8px 10px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+/* ---------- "who" chip on step 2 ---------- */
+.who {
+  background: var(--paper);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin: 0 0 4px;
+  font-size: .95rem;
+}
+.who span { display: block; font-size: .8rem; color: var(--muted); }
+.who strong { display: block; font-size: 1.05rem; }
+
+/* ---------- messages ---------- */
+.error {
+  margin-top: 16px;
+  padding: 10px 12px;
+  background: var(--err-bg);
+  color: var(--err);
+  border-radius: 8px;
+  font-size: .92rem;
+}
+.notice { background: var(--err-bg); color: var(--err); padding: 10px 12px; border-radius: 8px; }
+
+/* ---------- step 3 (done) ---------- */
+.done { text-align: center; }
+.tick {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--ok);
+  color: #fff;
+  display: grid; place-items: center;
+  font-size: 30px;
+  margin: 4px auto 14px;
+}
+
+.idrow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: var(--paper);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-top: 10px;
+  text-align: left;
+}
+.idtext span { display: block; font-size: .8rem; color: var(--muted); }
+.idtext strong { display: block; font-size: 1.02rem; word-break: break-all; user-select: all; }
+.copybtn {
+  flex: none;
+  background: var(--brand);
+  color: #fff;
+  border: 0;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font: inherit;
+  font-weight: 600;
+  font-size: .85rem;
+  cursor: pointer;
+}
+.copybtn:hover { background: var(--brand-dark); }
+
+.steps-list {
+  text-align: left;
+  color: var(--muted);
+  padding-left: 20px;
+  margin: 16px 0 0;
+}
+
+.foot { margin-top: 18px; color: var(--muted); font-size: .82rem; text-align: center; max-width: 480px; }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }

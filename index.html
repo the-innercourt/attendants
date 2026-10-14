@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<!-- Only this site's own files may run, and the page may only talk to a *.workers.dev address -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src data:; connect-src https://*.workers.dev; base-uri 'none'; form-action 'none'">
+<title>Vantora – Staff Activation</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231a237e'/%3E%3Cpath d='M16 20l16 28 16-28' fill='none' stroke='white' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <span class="wordmark">Vantora</span>
+  <span class="org" id="orgName">Staff account activation</span>
+</header>
+
+<main class="panel">
+
+  <!-- STEP 1: identify -->
+  <section id="step1" class="step" aria-labelledby="h1">
+    <h1 id="h1" tabindex="-1">Find your staff record</h1>
+    <p class="lead">Enter the Attendant ID you used before and the phone number you gave the church.</p>
+    <form id="form1" novalidate>
+      <label for="attId">Attendant ID</label>
+      <input id="attId" autocomplete="off" autocapitalize="characters" placeholder="e.g. ATD954680" maxlength="40" required>
+      <label for="phone">Phone number</label>
+      <input id="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="e.g. 08131528990" maxlength="20" required>
+      <button class="btn" id="btn1" type="submit" data-label="Continue">Continue</button>
+    </form>
+  </section>
+
+  <!-- STEP 2: set email + password -->
+  <section id="step2" class="step hidden" aria-labelledby="h2">
+    <h1 id="h2" tabindex="-1">Set up your login</h1>
+    <div class="who"><span>Activating</span><strong id="whoName"></strong></div>
+    <form id="form2" novalidate>
+      <label for="email">Email address</label>
+      <input id="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" maxlength="120" required>
+      <p class="hint">Used to send your password reset code.</p>
+
+      <label for="pin">Password (exactly 6 digits)</label>
+      <div class="pwrow">
+        <input id="pin" type="password" inputmode="numeric" pattern="[0-9]{6}" autocomplete="new-password" minlength="6" maxlength="6" placeholder="Exactly 6 digits" required>
+        <button type="button" class="textbtn" data-toggle="pin">Show</button>
+      </div>
+
+      <label for="pin2">Confirm password</label>
+      <div class="pwrow">
+        <input id="pin2" type="password" inputmode="numeric" pattern="[0-9]{6}" autocomplete="new-password" maxlength="6" placeholder="Type it again" required>
+        <button type="button" class="textbtn" data-toggle="pin2">Show</button>
+      </div>
+
+      <button class="btn" id="btn2" type="submit" data-label="Activate my account">Activate my account</button>
+    </form>
+    <button class="textbtn" id="back" type="button">Use a different ID</button>
+  </section>
+
+  <!-- STEP 3: done -->
+  <section id="step3" class="step hidden done" aria-labelledby="h3">
+    <div class="tick" aria-hidden="true">&#10003;</div>
+    <h1 id="h3" tabindex="-1">Your account is active</h1>
+    <p class="lead" id="doneMsg"></p>
+
+    <div class="idrow">
+      <div class="idtext"><span>Organization ID</span><strong id="doneOrg"></strong></div>
+      <button type="button" class="copybtn" data-copy="doneOrg">Copy</button>
+    </div>
+    <div class="idrow">
+      <div class="idtext"><span>Attendant ID</span><strong id="doneAtt"></strong></div>
+      <button type="button" class="copybtn" data-copy="doneAtt">Copy</button>
+    </div>
+    <ol class="steps-list">
+      <li>Open the Vantora app.</li>
+      <li>Log in with your Attendant ID and the password you just set.</li>
+    </ol>
+  </section>
+
+  <div id="error" class="error hidden" role="alert"></div>
+</main>
+
+<footer class="foot">Having trouble? Ask your church admin to check your record.</footer>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
